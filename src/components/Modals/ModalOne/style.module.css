@@ -1,0 +1,84 @@
+.wrapper {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 100vh;
+  padding: var(--modal-padding);
+  border-radius: 10px;
+  margin: auto;
+  gap: 5px;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.end {
+  display: flex;
+  justify-content: flex-end;
+  width: 650px;
+}
+
+.wrapper .x {
+  width: 25px;
+  background-color: grey;
+  border-radius: 50%;
+  text-align: center;
+  transform: translateY(50%);
+  color: white;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  /* background-color: aqua; */
+  width: 580px;
+  height: 100px;
+  gap: 5px;
+  margin: 0 auto;
+}
+.content {
+  width: 580px;
+  height: 119px;
+  background-color: #f4f6ff;
+  padding-top: 30px;
+  padding-bottom: 68px;
+  padding-left: 37px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+.gallery {
+  display: flex;
+  gap: 20px;
+}
+.buttons {
+  display: flex;
+  gap: 29px;
+  justify-content: center;
+  align-items: center;
+}
+
+.mandate {
+  background-color: #304daf;
+  padding: 21px 75px;
+  outline: none;
+  border: none;
+}
+
+.nomandate {
+  background-color: transparent;
+  padding: 21px 75px;
+  outline: none;
+  border: 1px solid #304daf;
+  color: #304daf;
+}

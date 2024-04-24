@@ -51,6 +51,7 @@
 .section-four {
   display: flex;
   gap: 20px;
+  width: 755px;
   /* justify-content: center; */
   align-items: center;
 }
@@ -62,15 +63,22 @@
 
 .proceed {
   background-color: #304daf;
-  padding: 21px 75px;
+  /* padding: 21px 40px; */
   outline: none;
   border: none;
 }
 
 .cancel {
   background-color: transparent;
-  padding: 21px 75px;
+  /* padding: 21px 40px; */
   outline: none;
   border: 1px solid #ff0000;
   color: #ff0000;
+}
+
+.mandate {
+  color: "#304daf";
+  border: none;
+  outline: none;
+  background: none;
 }

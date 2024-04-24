@@ -9,6 +9,10 @@ import { AccountTransferDetails } from "./pages/NewTransaction/AccountTransferDe
 import { BeneficiaryDetails } from "./pages/NewTransaction/BeneficiaryDetails";
 import { BeneficiaryTwo } from "./pages/NewTransaction/BeneficiaryTwo";
 import { SenderDetails } from "./pages/NewTransaction/SenderDetails";
+import { ModalOne } from "./components/Modals/ModalOne";
+import { ModalTwo } from "./components/Modals/ModalTwo";
+import { ModalThree } from "./components/Modals/ModalThree";
+import { ModalFour } from "./components/Modals/ModalFour";
 
 function App() {
   return (
@@ -37,6 +41,10 @@ function App() {
           </Route>
           <Route path="vault" element={<Vault />} />
         </Route>
+        <Route path="modal-one" element={<ModalOne />} />
+        <Route path="modal-two" element={<ModalTwo />} />
+        <Route path="modal-three" element={<ModalThree />} />
+        <Route path="modal-four" element={<ModalFour />} />
       </Routes>
     </div>
   );

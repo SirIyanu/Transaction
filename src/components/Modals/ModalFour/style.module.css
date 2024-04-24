@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 30vw;
+  height: 40vh;
+  margin: 50px auto;
+  justify-content: center;
+  align-items: center;
+  background-color: bisque;
+  padding: var(--modal-padding);
+  border-radius: 10px;
+}
+
+button {
+  background-color: #304daf;
+  padding: 21px 34px;
+  outline: none;
+  border: none;
+  width: 381px;
+}
