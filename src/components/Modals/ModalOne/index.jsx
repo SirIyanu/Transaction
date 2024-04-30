@@ -10,11 +10,19 @@ import Pic7 from "../../../assets/pic-7.svg";
 import Pic8 from "../../../assets/pic-8.svg";
 import Pic9 from "../../../assets/pic-9.svg";
 import Pic10 from "../../../assets/pic-10.svg";
-export const ModalOne = () => {
+export const ModalOne = ({onConfirm}) => {
+  const [mandateConfirmed, setMandateConfirmed] = useState(false); // State variable to manage mandate confirmation
+
+
+  const handleConfirmMandate = () => {
+    // Update the state variable to indicate that the mandate is confirmed
+    setMandateConfirmed(true);
+    onConfirm();
+  };
   return (
     <div>
-      <div className={style.wrapper}>
-        <div className={style.flex}>
+      <div className={style["wrapper-modal"]}>
+        <div className={style["flex-modal"]}>
           <div className={style.end}>
             <div className={style.x}>x</div>
           </div>
@@ -72,9 +80,9 @@ export const ModalOne = () => {
             </div>
           </div>
 
-          <div className={style.buttons}>
-            <button className={style.mandate}>Confirm Mandate</button>
-            <button className={style.nomandate}>No Mandate</button>
+          <div className={style["buttons-modal"]}>
+            <button onConfirm={handleConfirmMandate} className={`${style["mandate-modal"]} ${mandateConfirmed ? style.green : ""}`}>Confirm Mandate</button>
+            <button className={style["nomandate-modal"]}>No Mandate</button>
           </div>
         </div>
       </div>

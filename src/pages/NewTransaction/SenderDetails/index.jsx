@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 import { GoArrowLeft } from "react-icons/go";
 import { ModalOne } from "../../../components/Modals/ModalOne";
@@ -7,11 +7,16 @@ import { Modal } from "../../../components/Modal";
 
 export const SenderDetails = () => {
   const [modal, setModal] = useState(false);
-
+  const [mandateConfirmed, setMandateConfirmed] = useState(false); // State variable to manage mandate confirmation
+  
   const toggleModal = () => {
     setModal(!modal);
   };
 
+  const handleConfirmMandate = () => {
+    // Update the state variable to indicate that the mandate is confirmed
+    setMandateConfirmed(true);
+  };
   if (modal) {
     document.body.classList.add("active-modal");
   } else {
@@ -141,8 +146,8 @@ export const SenderDetails = () => {
           </div>
         </section>
         <section className={style["section-four"]}>
-          <button className={style.mandate} onClick={toggleModal}>
-            Verify Mandate
+          <button className={`${style.mandate} ${mandateConfirmed ? style.green : ""}`} onClick={toggleModal}>
+          {mandateConfirmed ? "Mandate Confirmed" : "Confirm Mandate"}
           </button>
           <button className={style.cancel}>Cancel Transaction</button>
           <button className={style.proceed}>Verify BVN</button>
@@ -150,9 +155,9 @@ export const SenderDetails = () => {
       </div>
       {modal && (
         <Modal isOpen={modal} onClose={toggleModal}>
-          <ModalOne />
+          <ModalOne onConfirm={handleConfirmMandate}/>
         </Modal>
       )}
     </>
   );
-};
+}

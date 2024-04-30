@@ -1,4 +1,4 @@
-.wrapper {
+.wrapper-modal {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
   width: 650px;
 }
 
-.wrapper .x {
+.wrapper-modal .x {
   width: 25px;
   background-color: grey;
   border-radius: 50%;
@@ -61,21 +61,21 @@ img {
   display: flex;
   gap: 20px;
 }
-.buttons {
+.buttons-modal {
   display: flex;
   gap: 29px;
   justify-content: center;
   align-items: center;
 }
 
-.mandate {
+.mandate-modal {
   background-color: #304daf;
   padding: 21px 75px;
   outline: none;
   border: none;
 }
 
-.nomandate {
+.nomandate-modal {
   background-color: transparent;
   padding: 21px 75px;
   outline: none;
