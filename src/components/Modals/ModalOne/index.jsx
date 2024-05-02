@@ -17,7 +17,8 @@ export const ModalOne = ({onConfirm}) => {
   const handleConfirmMandate = () => {
     // Update the state variable to indicate that the mandate is confirmed
     setMandateConfirmed(true);
-    onConfirm();
+    onConfirm(); // Call the callback function passed from SenderDetails component
+    onClose(); // Close the modal
   };
   return (
     <div>
@@ -81,7 +82,7 @@ export const ModalOne = ({onConfirm}) => {
           </div>
 
           <div className={style["buttons-modal"]}>
-            <button onConfirm={handleConfirmMandate} className={`${style["mandate-modal"]} ${mandateConfirmed ? style.green : ""}`}>Confirm Mandate</button>
+            <button onClick={handleConfirmMandate} className={`${style["mandate-modal"]} ${mandateConfirmed ? style.green : ""}`}>Confirm Mandate</button>
             <button className={style["nomandate-modal"]}>No Mandate</button>
           </div>
         </div>

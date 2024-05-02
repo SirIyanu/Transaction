@@ -7,7 +7,7 @@ export const Modal = ({ children, isOpen, onClose }) => {
       {isOpen && (
         <div className={style.modal}>
           <div onClick={onClose} className={style.overlay}></div>
-          <div className={style["modal-content"]}>{children}</div>
+          <div  onClick={onClose} className={style["modal-content"]}>{children}</div>
         </div>
       )}
     </div>

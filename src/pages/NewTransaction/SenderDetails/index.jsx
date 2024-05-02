@@ -2,26 +2,60 @@ import { Link, useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 import { GoArrowLeft } from "react-icons/go";
 import { ModalOne } from "../../../components/Modals/ModalOne";
+import { ModalTwo } from "../../../components/Modals/ModalTwo";
+import {ModalThree} from "../../../components/Modals/ModalThree";
+import { ModalFour } from "../../../components/Modals/ModalFour"; 
 import { useState } from "react";
 import { Modal } from "../../../components/Modal";
 
 export const SenderDetails = () => {
   const [modal, setModal] = useState(false);
   const [mandateConfirmed, setMandateConfirmed] = useState(false); // State variable to manage mandate confirmation
+  const [showCancelButton, setShowCancelButton] = useState(true); // State variable to manage whether to show the cancel button
+  const [bvnVerified, setBvnVerified] = useState(false); // State variable to track BVN verification
+  const [submitClicked, setSubmitClicked] = useState(false); // State variable to track if submit button is clicked
+  const [showModalFour, setShowModalFour] = useState(false); // State variable to track whether to show Modal Four
+
   
   const toggleModal = () => {
     setModal(!modal);
+
+    // Close the modal after confirming mandate
+    if (!modal) {
+      document.body.classList.add("active-modal");
+    } else {
+      document.body.classList.remove("active-modal");
+    }
   };
 
   const handleConfirmMandate = () => {
     // Update the state variable to indicate that the mandate is confirmed
     setMandateConfirmed(true);
+    toggleModal(); 
   };
-  if (modal) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
+
+  const handleVerifyBVN = () => {
+    // Logic to verify BVN
+    // Once BVN is verified successfully, update state to indicate BVN verification
+    setBvnVerified(true);
+     // Remove the "Cancel" and "Verify Mandate" buttons
+     setShowCancelButton(false);
+     // Reset the mandateConfirmed state
+     setMandateConfirmed(false);
+     // Close the modal
+     toggleModal();
+  };
+
+  const handleSubmit = () => {
+    setSubmitClicked(true); // Set submitClicked to true when the submit button is clicked
+    setShowModalFour(false); // Ensure Modal Four is hidden initially
+
+  };
+
+  const handleDoneModalThree = () => {
+    // Set showModalFour to true when the Done button on Modal Three is clicked
+    setShowModalFour(true);
+  };
   return (
     <>
       <div className={style.wrapper}>
@@ -53,7 +87,7 @@ export const SenderDetails = () => {
               <div className={style.flex}>
                 <p>Account Status</p>
                 <strong>
-                  <p>Active</p>
+                  <p className={`${style.active} ${mandateConfirmed ? style.green : ""}`}>{mandateConfirmed ? "Active" : "Active"}</p>
                 </strong>
               </div>
               <div className={style.flex}>
@@ -146,18 +180,39 @@ export const SenderDetails = () => {
           </div>
         </section>
         <section className={style["section-four"]}>
+          {bvnVerified ? (
+            <>
+            <button className={style.submit} onClick={handleSubmit}>Submit</button>
+            {submitClicked && (
+              <Modal isOpen={submitClicked} onClose={() => setSubmitClicked(false)}>
+                <ModalThree  onDone={handleDoneModalThree} />
+              </Modal>
+            )}
+          </>
+
+          ) : (
+            <>
           <button className={`${style.mandate} ${mandateConfirmed ? style.green : ""}`} onClick={toggleModal}>
           {mandateConfirmed ? "Mandate Confirmed" : "Confirm Mandate"}
           </button>
-          <button className={style.cancel}>Cancel Transaction</button>
-          <button className={style.proceed}>Verify BVN</button>
+          {showCancelButton && (
+          <button className={style.cancel}>Cancel Transaction</button>)}
+          <button onClick={handleVerifyBVN} className={style.proceed}>Verify BVN</button>
+          </>
+        )}
         </section>
       </div>
       {modal && (
         <Modal isOpen={modal} onClose={toggleModal}>
-          <ModalOne onConfirm={handleConfirmMandate}/>
+          {bvnVerified ? <ModalTwo/> : <ModalOne onConfirm={handleConfirmMandate}/>}
         </Modal>
       )}
+{showModalFour && (
+  <Modal isOpen={showModalFour} onClose={() => setShowModalFour(false)}>
+    <ModalFour />
+  </Modal>
+)}
     </>
   );
 }
+ 

@@ -56,6 +56,10 @@
   align-items: center;
 }
 
+.active {
+  color: black;
+}
+
 .buttons {
   display: flex;
   gap: 29px;
@@ -77,10 +81,15 @@
 }
 
 .mandate {
-  color: "#304daf";
+  color: #304daf;
   border: none;
   outline: none;
   background: none;
+}
+
+.green {
+  color: green;
+  font-weight: bold;
 }
 
 
